@@ -107,7 +107,8 @@ if (document.getElementById('game-screen')) {
 
     function renderUI() {
         document.getElementById('level-display').innerText = state.level;
-        document.getElementById('score-display').innerText = state.score;
+        // document.getElementById('score-display').innerText = state.score;
+        document.querySelector('#score-display span').innerText = state.score;
     }
 
     function updateTimerUI() {
