@@ -139,8 +139,7 @@ if (document.getElementById('game-screen')) {
     initGame();
 }
 
-// ... (Phần logic result.html và history.html giữ nguyên như bài trước) ...
-// Copy phần logic Result và History ở các bài trước dán vào đây
+// Phần logic Result và History
 if (document.getElementById('result-screen')) {
     const result = JSON.parse(localStorage.getItem('tempResult'));
     let history = JSON.parse(localStorage.getItem('fullHistory')) || [];
