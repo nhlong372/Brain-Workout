@@ -69,6 +69,12 @@ body {
   text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
   margin-bottom: 5px;
 }
+.description-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-white);
+  margin-bottom: 20px;
+}
 .score-big {
   font-size: 3.5rem;
   font-weight: 800;
@@ -264,7 +270,7 @@ body {
   max-height: 80vh;
   overflow-y: auto;
 }
-.label-pill {
+.label-pill{
   background: #fca311;
   color: #0b1229;
   font-weight: bold;
