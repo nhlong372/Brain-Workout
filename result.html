@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Over</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div
+      id="result-screen"
+      class="main-card"
+      style="text-align: center; padding: 40px 30px"
+    >
+      <div class="title-text" style="color: white; margin-bottom: 30px">
+        KẾT THÚC
+      </div>
+
+      <div style="display: flex; gap: 15px; margin-bottom: 20px">
+        <div
+          style="
+            background: #1e2a4a;
+            padding: 20px;
+            border-radius: 15px;
+            flex: 1;
+            border: 1px solid #2e3e63;
+          "
+        >
+          <div style="font-size: 0.7rem; color: #8f9bb3; font-weight: bold">
+            ĐIỂM LẦN NÀY
+          </div>
+          <div
+            class="score-big"
+            style="font-size: 2.5rem; color: var(--cyan)"
+            id="final-score"
+          >
+            0
+          </div>
+        </div>
+        <div
+          style="
+            background: #1e2a4a;
+            padding: 20px;
+            border-radius: 15px;
+            flex: 1;
+            border: 1px solid #2e3e63;
+          "
+        >
+          <div style="font-size: 0.7rem; color: #8f9bb3; font-weight: bold">
+            LEVEL
+          </div>
+          <div
+            class="score-big"
+            style="font-size: 2.5rem; color: var(--yellow)"
+            id="final-level"
+          >
+            1
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          background: #1e2a4a;
+          padding: 15px;
+          border-radius: 10px;
+          margin-bottom: 30px;
+          border: 1px solid #2e3e63;
+        "
+      >
+        <span style="color: #8f9bb3; font-size: 0.9rem; font-weight: bold"
+          >KỶ LỤC CAO NHẤT:
+        </span>
+        <span
+          style="color: var(--yellow); font-weight: 800; font-size: 1.2rem"
+          id="best-score"
+          >0</span
+        >
+      </div>
+
+      <button class="btn-3d btn-green" onclick="goTo('game.html')">
+        CHƠI LẠI
+      </button>
+
+      <button class="btn-3d btn-secondary-3d" onclick="goTo('index.html')">
+        MENU CHÍNH
+      </button>
+    </div>
+        <script src="assets/js/logic.js"></script>
+
+  </body>
+</html>

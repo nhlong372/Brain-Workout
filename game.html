@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playing...</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div id="game-screen" class="main-card">
+      <div
+        class="info-game"
+      >
+        <div class="label-pill">
+          CẤP ĐỘ: <span id="level-display">1</span>
+        </div>
+        <div style="font-size: 2rem; font-weight: 800" id="score-display">
+          0
+        </div>
+        <div class="label-pill">
+          TIME: <span id="time-text">45s</span>
+        </div>
+      </div>
+
+      <div style="text-align: center">
+        <div style="color: #8f9bb3; font-size: 0.8rem; font-weight: bold">
+          CỘNG THÊM BAO NHIÊU?
+        </div>
+        <div class="equation-area">
+          <span id="given-num">?</span> +
+          <input type="text" id="user-input" class="input-line" readonly /> =
+          <span id="target-num" class="target-num">100</span>
+        </div>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="timer-bar"></div>
+      </div>
+
+      <div class="numpad">
+        <button class="key-btn" onclick="press(1)">1</button>
+        <button class="key-btn" onclick="press(2)">2</button>
+        <button class="key-btn" onclick="press(3)">3</button>
+        <button class="key-btn" onclick="press(4)">4</button>
+        <button class="key-btn" onclick="press(5)">5</button>
+        <button class="key-btn" onclick="press(6)">6</button>
+        <button class="key-btn" onclick="press(7)">7</button>
+        <button class="key-btn" onclick="press(8)">8</button>
+        <button class="key-btn" onclick="press(9)">9</button>
+        <button class="key-btn key-back" onclick="del()">⌫</button>
+        <button class="key-btn" onclick="press(0)">0</button>
+        <button class="key-btn key-enter" onclick="enter()">⏎</button>
+      </div>
+    </div>
+    <script src="assets/js/logic.js"></script>
+  </body>
+</html>
+

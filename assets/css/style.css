@@ -1,0 +1,335 @@
+@font-face {
+  font-family: "sc-rc";
+  src: url("../fonts/ScienceGothic_Condensed-Bold.ttf");
+  font-style: normal;
+  font-display: block;
+}
+
+/* --- Cấu hình chung --- */
+:root {
+  --bg-dark: #000000; /* Đen tuyền */
+  --bg-card: #0f190f; /* Xanh đen rất tối */
+  --text-white: #ecf0f1;
+  --green-matrix: #00ff41; /* Xanh lá Matrix */
+  --green-matrix-dark: #00b32d;
+  --green: #00ff41; /* Dùng chung màu chủ đạo */
+  --red: #ff0033;
+  --red-dark: #a83232;
+  --yellow: #fca311;
+  --input-bg: #1a2e1a;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--bg-dark); /* Giữ nguyên hiệu ứng lưới */
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px; /* Kích thước ô lưới */ /* THÊM DÒNG NÀY ĐỂ NÓ CHUYỂN ĐỘNG */
+  animation: scrollGrid 2s linear infinite; /* Các thuộc tính cũ giữ nguyên */
+  color: var(--text-white);
+  font-family: "sc-rc";
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+@keyframes scrollGrid {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+  /* Phải khớp với background-size */
+}
+/* --- KHUNG CARD --- */
+.main-card {
+  background-color: var(--bg-card);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+/* --- TEXT STYLE --- */
+.title-text {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--green-matrix);
+  text-transform: uppercase;
+  text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+  margin-bottom: 5px;
+}
+.score-big {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-white);
+}
+
+/* --- BUTTONS (Hiệu ứng 3D) --- */
+.btn-3d {
+  border: none;
+  border-radius: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 15px;
+  width: 100%;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  transition: transform 0.1s;
+  position: relative;
+  cursor: pointer;
+  font-family: "sc-rc";
+}
+.btn-3d:active {
+  transform: translateY(4px);
+  box-shadow: none !important;
+}
+.btn-green-matrix {
+  background-color: var(--green-matrix);
+  color: #0b1229;
+  box-shadow: 0 5px 0 var(--green-matrix-dark);
+}
+.btn-red {
+  background-color: var(--red);
+  color: white;
+  box-shadow: 0 5px 0 var(--red-dark);
+}
+.btn-green {
+  background-color: var(--green);
+  color: white;
+  box-shadow: 0 5px 0 var(--green-dark);
+}
+.btn-yellow {
+  background-color: var(--yellow);
+  color: #0b1229;
+  box-shadow: 0 5px 0 #c5810e;
+}
+.btn-secondary-3d {
+  background-color: #34495e;
+  color: white;
+  box-shadow: 0 5px 0 #2c3e50;
+}
+/* --- GAMEPLAY ELEMENTS --- */
+.equation-area {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 30px 0;
+}
+.target-num {
+  color: var(--yellow);
+}
+.input-line {
+  background: transparent;
+  border: none;
+  border-bottom: 4px solid var(--green-matrix);
+  color: var(--green-matrix);
+  width: 100px;
+  text-align: center;
+  outline: none;
+  font-size: 3rem;
+  font-family: "sc-rc";
+}
+/* Bàn phím ảo */
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.key-btn {
+  background-color: #253252;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 0 #44598f;
+  cursor: pointer;
+}
+.key-btn:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+.key-back {
+  background-color: var(--red-dark);
+}
+.key-enter {
+  background-color: var(--green);
+}
+/* --- THANH THỜI GIAN --- */
+.progress-container {
+  height: 6px;
+  background: #253252;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--green-matrix);
+  width: 100%;
+  transition: width 0.1s linear;
+  border-radius: 10px;
+}
+/* --- LỊCH SỬ --- */
+.history-grid-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 0.8fr 50px;
+  gap: 10px;
+  align-items: center;
+  text-align: center; /* Căn giữa chữ */
+}
+
+/* Dòng tiêu đề bảng */
+.history-header-row {
+  color: #5a6b8c;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0 15px 10px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+}
+
+/* Từng dòng lịch sử (Item) */
+.history-item {
+  background: #1e2a4a;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #2e3e63;
+  cursor: pointer;
+  transition: 0.2s;
+  color: white;
+  font-size: 0.9rem;
+
+  /* Áp dụng lưới giống header để thẳng hàng */
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 0.8fr 50px;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.history-item:hover {
+  border-color: var(--green-matrix);
+  background: #253252;
+}
+
+/* Nút Đóng xịn xò hơn */
+.btn-close-custom {
+  background-color: var(--red);
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--red-dark);
+  transition: transform 0.1s;
+}
+.btn-close-custom:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+/* Modal chi tiết */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal-content {
+  background: white;
+  color: #333;
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.label-pill {
+  background: #fca311;
+  color: #0b1229;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid #44598f;
+}
+.best-score-board {
+  background: #1e2a4a;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  border: 1px solid #2e3e63;
+}
+
+#level-display,
+#time-text {
+  color: #0b1229;
+}
+
+#game-screen .info-game {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* --- HIỆU ỨNG RUNG --- */
+@keyframes shake {
+    0% { transform: translateX(0); } 25% { transform: translateX(-5px); border-color: var(--red); }
+    50% { transform: translateX(5px); } 75% { transform: translateX(-5px); border-color: var(--red);} 100% { transform: translateX(0); }
+}
+.shake { animation: shake 0.3s; }
+
+#history-list{
+  overflow-y: auto; flex-grow: 1; padding-right: 5px
+}
+
+#history-list::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #f5f5f5;
+}
+
+#history-list::-webkit-scrollbar
+{
+	width: 6px;
+}
+
+#history-list::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: var(--yellow);
+}
+
+
+/* Responsive */
+@media (max-width: 440px) {
+    .main-card { padding: 15px; margin: 0 10px; }
+    .key-btn { padding: 12px 0; font-size: 1.2rem; }
+    .label-pill { font-size: 0.65rem; padding: 4px 8px; }
+}
+

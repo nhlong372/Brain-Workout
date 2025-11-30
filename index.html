@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="main-card" style="text-align: center">
+      <div class="title-text">Brain Workout</div>
+      <!-- <div class="label-pill">By Gon Dev</div> -->
+      <div class="best-score-board">
+        <div class="score-text"
+          style="font-size: 0.8rem; color: #8f9bb3; text-transform: uppercase"
+        >
+          Điểm Cao Nhất
+        </div>
+        <div
+          class="score-number"
+          style="font-size: 2.5rem; color: #fca311"
+          id="high-score-display"
+        >
+          0
+        </div>
+      </div>
+
+      <button class="btn-3d btn-cyan" onclick="goTo('game.html')">
+        ▶ Chơi
+      </button>
+      <button class="btn-3d btn-yellow" onclick="goTo('history.html')">
+        📜 Lịch sử chơi
+      </button>
+    </div>
+
+    <script src="assets/js/logic.js"></script>
+    <script>
+      // Hiển thị điểm cao nhất ngay ở trang chủ
+      let h = JSON.parse(localStorage.getItem("fullHistory")) || [];
+      let max = h.reduce((m, i) => Math.max(m, i.score), 0);
+      document.getElementById("high-score-display").innerText = max;
+    </script>
+  </body>
+</html>
